@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 const pageTitle = "About Me";
 
 const identity = {
@@ -10,9 +12,14 @@ const identity = {
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
+const favoriteGames = ["Silent Hill", "Resident Evil"];
+
+const favoriteThings = ["Video games", "Music", "Programming", "Technology"];
+
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "crimson";
 ---
 
 <html lang="en">
@@ -20,6 +27,27 @@ const goal = 3;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
+
+    <style define:vars={{skillColor}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+
+      .skill {
+        color: var(--skillColor);
+        font-weight: bold;
+      }
+
+      .section-title {
+        color: #444;
+        margin-top: 2rem;
+      }
+
+      .highlight {
+        font-weight: bold;
+      }
+    </style>
   </head>
 
   <body>
@@ -28,29 +56,65 @@ const goal = 3;
     <a href="/blog/">Blog</a>
 
     <h1>{pageTitle}</h1>
+
     <h2>Well, to be honest... idk what I'm doing rn</h2>
 
-    <p>This is my new Astro Project, and as you can see, it seems really "good".</p>
-    <p>Ma Cherie</p>
-    <p>Let me make you B E A U T I F U L</p>
+    <p>
+      Hi! My name is {identity.firstName}. I am a student from {identity.country}
+      and I am currently learning web development and programming.
+    </p>
 
-    <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    <p>
+      This is my Astro project, and I am building this website while learning
+      more about Astro and web development.
+    </p>
+
+    <h2 class="section-title">A little about me</h2>
+
+    <p>
+      I really enjoy <span class="highlight">video games, music and programming</span>.
+      One of my favorite games is <span class="highlight">Silent Hill</span>
+      because I really like its atmosphere, story and horror style.
+    </p>
+
+    <p>
+      I also enjoy learning new things about technology and creating projects
+      while practicing what I learn.
+    </p>
+
+    <h2 class="section-title">Some of my favorite games</h2>
+
+    <ul>
+      {favoriteGames.map((game) => <li>{game}</li>)}
+    </ul>
+
+    <h2 class="section-title">Things I like</h2>
+
+    <ul>
+      {favoriteThings.map((thing) => <li>{thing}</li>)}
+    </ul>
 
     <p>Here are a few facts about me:</p>
 
     <ul>
       <li>My name is {identity.firstName}.</li>
-      <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
 
-      {identity.hobbies.length >= 2 &&
-        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
-      }
+      <li>
+        I live in {identity.country} and I work as a {identity.occupation}.
+      </li>
+
+      {identity.hobbies.length >= 2 && (
+        <li>
+          Two of my hobbies are: {identity.hobbies[0]} and
+          {identity.hobbies[1]}
+        </li>
+      )}
     </ul>
 
     <p>My skills are:</p>
 
     <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
 
     {happy && <p>I am happy to be learning Astro!</p>}
