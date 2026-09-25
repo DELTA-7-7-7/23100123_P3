@@ -1,4 +1,6 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 const pageTitle = "About Me";
@@ -12,7 +14,7 @@ const identity = {
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 
-const favoriteGames = ["Silent Hill", "Resident Evil"];
+const favoriteGames = ["Silent Hill", "Resident Evil", "Minecraft"];
 
 const favoriteThings = ["Video games", "Music", "Programming", "Technology"];
 
@@ -51,9 +53,7 @@ const skillColor = "crimson";
   </head>
 
   <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
+    <Header />
 
     <h1>{pageTitle}</h1>
 
@@ -72,8 +72,10 @@ const skillColor = "crimson";
     <h2 class="section-title">A little about me</h2>
 
     <p>
-      I really enjoy <span class="highlight">video games, music and programming</span>.
-      One of my favorite games is <span class="highlight">Silent Hill</span>
+      I really enjoy
+      <span class="highlight">video games, music and programming</span>.
+      One of my favorite games is
+      <span class="highlight">Silent Hill</span>
       because I really like its atmosphere, story and horror style.
     </p>
 
@@ -125,5 +127,11 @@ const skillColor = "crimson";
       ? <p>My goal is to finish in 3 days.</p>
       : <p>My goal is not 3 days.</p>
     }
+
+    <Footer />
+
+    <script>
+      import "../scripts/menu.js";
+    </script>
   </body>
 </html>
