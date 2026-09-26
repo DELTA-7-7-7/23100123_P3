@@ -17,14 +17,21 @@ const favoriteGames = ["Silent Hill", "Resident Evil", "Minecraft"];
 const favoriteThings = ["Video games", "Music", "Programming", "Technology"];
 
 const happy = true;
-const finished = false;
+
+const finished = true;
+
 const goal = 3;
+
 const skillColor = "crimson";
+
+const fontWeight = "bold";
+
+const textCase = "uppercase";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
 
-  <style is:global define:vars={{skillColor}}>
+  <style is:global define:vars={{skillColor, fontWeight, textCase}}>
     h1 {
       color: purple;
       font-size: 4rem;
@@ -32,7 +39,8 @@ const skillColor = "crimson";
 
     .skill {
       color: var(--skillColor);
-      font-weight: bold;
+      font-weight: var(--fontWeight);
+      text-transform: var(--textCase);
     }
 
     .section-title {

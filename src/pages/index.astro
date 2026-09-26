@@ -1,9 +1,96 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/Greeting';
 
-const pageTitle = "Home Page";
+const pageTitle = "Halloween Night";
+
+const poster =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAL4eubO2HPy3uQs3pP9QDRNPMw84CGZX3gg2UQlZBnbrDRG4OFPsdye_Q&s=10";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+
+  <section class="hero">
+
+    <img
+      src={poster}
+      alt="Halloween 1978"
+      class="poster"
+    />
+
+    <div class="hero-text">
+      <p class="subtitle">OCTOBER 31, 1978</p>
+
+      <h2>THE NIGHT HE CAME HOME</h2>
+
+      <p>
+        Welcome to my little corner of the internet.
+        A blog about horror movies, video games,
+        programming and other things I enjoy.
+      </p>
+
+      <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+    </div>
+
+  </section>
+
+  <section class="welcome">
+
+    <h2>Welcome to my blog</h2>
+
+    <p>
+      This website is part of my Astro project. Here I will
+      share things I learn, projects I work on and some of
+      my favorite topics.
+    </p>
+
+    <p class="warning">
+      idislikeusernames1... Tysm for all. I hope you've achieved all your goals, my moon.
+    </p>
+
+  </section>
+
 </BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #111;
+    border: 1px solid #333;
+    border-top: 4px solid #f07818;
+    border-bottom: 4px solid #f07818;
+  }
+
+  .poster {
+    display: block;
+    width: 260px;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+    border: 2px solid #333;
+    box-shadow: 0 0 20px #000;
+  }
+
+  .hero-text h2 {
+    font-size: 2rem;
+    color: #f07818;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: #999;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+  }
+
+  .welcome {
+    margin-top: 2rem;
+  }
+
+  .warning {
+    color: #f07818;
+    font-weight: bold;
+    font-style: italic;
+  }
+</style>
