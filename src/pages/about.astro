@@ -1,7 +1,5 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const pageTitle = "About Me";
 
@@ -24,114 +22,98 @@ const goal = 3;
 const skillColor = "crimson";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
+<BaseLayout pageTitle={pageTitle}>
 
-    <style define:vars={{skillColor}}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-
-      .skill {
-        color: var(--skillColor);
-        font-weight: bold;
-      }
-
-      .section-title {
-        color: #444;
-        margin-top: 2rem;
-      }
-
-      .highlight {
-        font-weight: bold;
-      }
-    </style>
-  </head>
-
-  <body>
-    <Header />
-
-    <h1>{pageTitle}</h1>
-
-    <h2>Well, to be honest... idk what I'm doing rn</h2>
-
-    <p>
-      Hi! My name is {identity.firstName}. I am a student from {identity.country}
-      and I am currently learning web development and programming.
-    </p>
-
-    <p>
-      This is my Astro project, and I am building this website while learning
-      more about Astro and web development.
-    </p>
-
-    <h2 class="section-title">A little about me</h2>
-
-    <p>
-      I really enjoy
-      <span class="highlight">video games, music and programming</span>.
-      One of my favorite games is
-      <span class="highlight">Silent Hill</span>
-      because I really like its atmosphere, story and horror style.
-    </p>
-
-    <p>
-      I also enjoy learning new things about technology and creating projects
-      while practicing what I learn.
-    </p>
-
-    <h2 class="section-title">Some of my favorite games</h2>
-
-    <ul>
-      {favoriteGames.map((game) => <li>{game}</li>)}
-    </ul>
-
-    <h2 class="section-title">Things I like</h2>
-
-    <ul>
-      {favoriteThings.map((thing) => <li>{thing}</li>)}
-    </ul>
-
-    <p>Here are a few facts about me:</p>
-
-    <ul>
-      <li>My name is {identity.firstName}.</li>
-
-      <li>
-        I live in {identity.country} and I work as a {identity.occupation}.
-      </li>
-
-      {identity.hobbies.length >= 2 && (
-        <li>
-          Two of my hobbies are: {identity.hobbies[0]} and
-          {identity.hobbies[1]}
-        </li>
-      )}
-    </ul>
-
-    <p>My skills are:</p>
-
-    <ul>
-      {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
-
-    {happy && <p>I am happy to be learning Astro!</p>}
-
-    {finished && <p>I finished this tutorial!</p>}
-
-    {goal === 3
-      ? <p>My goal is to finish in 3 days.</p>
-      : <p>My goal is not 3 days.</p>
+  <style is:global define:vars={{skillColor}}>
+    h1 {
+      color: purple;
+      font-size: 4rem;
     }
 
-    <Footer />
+    .skill {
+      color: var(--skillColor);
+      font-weight: bold;
+    }
 
-    <script>
-      import "../scripts/menu.js";
-    </script>
-  </body>
-</html>
+    .section-title {
+      color: #444;
+      margin-top: 2rem;
+    }
+
+    .highlight {
+      font-weight: bold;
+    }
+  </style>
+
+  <h2>Well, to be honest... idk what I'm doing rn</h2>
+
+  <p>
+    Hi! My name is {identity.firstName}. I am a student from {identity.country}
+    and I am currently learning web development and programming.
+  </p>
+
+  <p>
+    This is my Astro project, and I am building this website while learning
+    more about Astro and web development.
+  </p>
+
+  <h2 class="section-title">A little about me</h2>
+
+  <p>
+    I really enjoy
+    <span class="highlight">video games, music and programming</span>.
+    One of my favorite games is
+    <span class="highlight">Silent Hill</span>
+    because I really like its atmosphere, story and horror style.
+  </p>
+
+  <p>
+    I also enjoy learning new things about technology and creating projects
+    while practicing what I learn.
+  </p>
+
+  <h2 class="section-title">Some of my favorite games</h2>
+
+  <ul>
+    {favoriteGames.map((game) => <li>{game}</li>)}
+  </ul>
+
+  <h2 class="section-title">Things I like</h2>
+
+  <ul>
+    {favoriteThings.map((thing) => <li>{thing}</li>)}
+  </ul>
+
+  <p>Here are a few facts about me:</p>
+
+  <ul>
+    <li>My name is {identity.firstName}.</li>
+
+    <li>
+      I live in {identity.country} and I work as a {identity.occupation}.
+    </li>
+
+    {identity.hobbies.length >= 2 && (
+      <li>
+        Two of my hobbies are: {identity.hobbies[0]} and
+        {identity.hobbies[1]}
+      </li>
+    )}
+  </ul>
+
+  <p>My skills are:</p>
+
+  <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+  </ul>
+
+  {happy && <p>I am happy to be learning Astro!</p>}
+
+  {finished && <p>I finished this tutorial!</p>}
+
+  {goal === 3
+    ? <p>My goal is to finish in 3 days.</p>
+    : <p>My goal is not 3 days.</p>
+  }
+
+</BaseLayout>
